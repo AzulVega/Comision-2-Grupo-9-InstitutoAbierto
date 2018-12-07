@@ -15,9 +15,9 @@ public class Curso {
    private String descripcion;
    private int idResponsableCurso;
    private int cupoDeAlumnos;
-   private double costo;
+   private Double costo;
 
-    public Curso(String nombre, String descripcion, int idResponsableCurso, int cupoDeAlumnos, double costo) {
+    public Curso(String nombre, String descripcion, int idResponsableCurso, int cupoDeAlumnos, Double costo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.idResponsableCurso = idResponsableCurso;
@@ -27,6 +27,10 @@ public class Curso {
     
     public Curso() {
         // los metodos son todos publicos para que puedas acceder desde otras clases 
+    }
+    
+    public Curso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public int getIdCurso() {
@@ -69,11 +73,11 @@ public class Curso {
         this.cupoDeAlumnos = cupoDeAlumnos;
     }
 
-    public double getCosto() {
+    public Double getCosto() {
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(Double costo) {
         this.costo = costo;
     }
    

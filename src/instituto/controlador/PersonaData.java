@@ -1,5 +1,10 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package instituto.controlador;
+
 import instituto.modelo.Conexion;
 import instituto.modelo.Persona;
 import java.sql.Connection;
@@ -7,114 +12,181 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author azu15
  */
 public class PersonaData {
-    private Connection connection = null; //va el NULL????? // es el paquete
-    private Conexion conexion; // es la clase 
-
-    public PersonaData(Conexion conexion) {
+    private Connection connection = null; 
+    private Conexion conexion;
+    
+    public PersonaData (Conexion conexion){
         
         try {
-        connection = conexion.getConexion(); //connection se van a asignarle la conexion a la base de datos 
-            } catch (SQLExepcion ex) {
-                System.out.println("Error al obtener la conexion"); //si no se puede obtener la conexion, te tira un cartel con error-
-               }
-            }
-
-    public void guardarPersona(Persona persona) {
+            connection = conexion.getConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        try { //sirve para ejecutar un bloque del codigo y en caso de que haya un problema, muestra el mje que hay en el catch
+    }
+    
+    public void guardarPersona (Persona persona){ //guarda los datos de una persona, no se le agrega el id porque se crea solo (autoincrementable)
+            try {
             
-            String sql = "INSERT INTO persona (nombre_apellido, dni, celular) VALUES ( ? , ? , ? );";
-            
-          try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-                ps.setString(1, persona.getNombreApellido());
-                ps.setLong(2, persona.getDni());
-                ps.setString(3, persona.getCelular());
-                
-                ps.executeUpdate(); //para que se ejecute el statement
-                ps.close(); // lo cierra
-           }
-          
+                String sql = "INSERT INTO persona (nombre_apellido, dni, celular) VALUES ( ? , ? , ? );";
+
+                    try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                        ps.setString(1, persona.getNombreApellido());
+                        ps.setString(2, persona.getDni());
+                        ps.setString(3, persona.getCelular());
+                        
+                        ps.executeUpdate();
+                        ps.close();
+                    }
+    
         } catch (SQLException ex) {
             System.out.println("Error al guardar una persona: " + ex.getMessage());
         }
     }
     
-    
-        public void eliminarPersona(int idPersona) { 
-            
-        try{
-       
-           String sql = "DELETE FROM persona WHERE id_persona = ? ;";
-            
-           PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, idPersona); //toma un id persona por parametro y lo elimina
-                
-                ps.executeUpdate(); //para que se ejecute el statement
-                ps.close(); // lo cierra
-           }
-          
-         catch (SQLException ex) {
-            System.out.println("Error al eliminar una persona: " + ex.getMessage());
-        }
- 
-}
-    
-        public void actualizarPersona(Persona persona) { 
-            
-        try{
-       
-           String sql = "UPDATE persona SET nombre_apellido = ?, dni = ?, celular = ?;";
-            
-           PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, persona.getNombreApellido());
-                ps.setLong(2, persona.getDni());
-                ps.setString(3, persona.getCelular());
-                
-                ps.executeUpdate(); //para que se ejecute el statement
-                ps.close(); // lo cierra
-           }
-          
-         catch (SQLException ex) {
-            System.out.println("Error al actualizar una persona: " + ex.getMessage());
-        }
- 
-}  
+    public void eliminarPersona(int idPersona) {
         
-        public Persona buscarPersona(int idPersona){ //Es un getter porque devuelve a la persona 
+        try {
+            String sql = "DELETE FROM persona WHERE id_persona =?;"; // envia una consulta donde elimina el cliente con el id que obtumo por parametro
+       
+             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); {
+                ps.setInt(1, idPersona);
+                
+                
+                ps.executeUpdate();
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar una persona; " + ex.getMessage());
+        }
+    }
+    
+    public void actualizarPersona (Persona persona){ //actualiza los datos de una persona a traves del id que se lo pasas por parametro
         
-        Persona persona = null; //Si la persona no tiene valor, se va a intentar seleccion una persona utilizando el id.
+        try {
+            
+            String sql = "UPDATE persona SET nombre_apellido = ?, dni = ?, celular = ? WHERE id_persona = ?;";
+
+                    PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                        
+                       
+                        ps.setString(1, persona.getNombreApellido());
+                        ps.setString(2, persona.getDni());
+                        ps.setString(3, persona.getCelular());
+                        ps.setInt(4, persona.getIdPersona());
+                        
+                        ps.executeUpdate();
+                        
+                        ps.close();
+      
+                    
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar datos de una persona: " + ex.getMessage());
+        }
+    }
+    
+    public Persona buscarPersona(int idPersona){
+        
+        Persona persona = null;
+        
         try {
             
             String sql = "SELECT * FROM persona WHERE id_persona =?;";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, idPersona);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idPersona);
+           
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                persona = new Persona();
                 
-                
-                ResultSet resultSet = ps.executeQuery(); //????wtf. Para que sirve el resulset
-                
-                while(resultSet.next()){  //??????
-                    persona = new Persona();
-                    
-                    persona.setId(resultSet.getInt("id_persona"));
-                    persona.setNombreApellido(resultSet.getString("nombre_apellido"));
-                    persona.setDni(resultSet.getLong("dni"));
-                    persona.setCelular(resultSet.getString("celular"));
-                }
-            }
+                persona.setIdPersona(rs.getInt("id_Persona"));
+                persona.setNombreApellido(rs.getString("nombre_apellido"));
+                persona.setDni(rs.getString("dni"));
+                persona.setCelular(rs.getString("celular"));
+            
+            }      
+            ps.close();
+            
 
         } catch (SQLException ex) {
-            System.out.println("Error al buscar un persona: " + ex.getMessage());
+            System.out.println("Error al buscar una persona: " + ex.getMessage());
         }
         
-        return persona;  //va a retornar la persona buscada a traves del id
+        return persona;
     }
     
+    public ArrayList <Persona> buscarPersonas(String nombreApellido){ //se usa string nombre y apellido para obtener el listado de nombres??
+        
+        Persona persona = null;
+        ArrayList <Persona> personas = new ArrayList<>();
+        try {
+            
+            String sql = "SELECT * FROM persona WHERE nombre_apellido LIKE ? OR id LIKE ?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, "%"+nombreApellido+"%");
+            ps.setString(2, "%"+nombreApellido+"%");
+            
+            ResultSet rs=ps.executeQuery();
+           
+            
+            while(rs.next()){
+                persona = new Persona();
+                
+                persona.setIdPersona(rs.getInt("id_Persona"));
+                persona.setNombreApellido(rs.getString("nombre_apellido"));
+                persona.setDni(rs.getString("dni"));
+                persona.setCelular(rs.getString("celular"));
+                personas.add(persona);
+            }      
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar una persona: " + ex.getMessage());
+        }
+        
+        return personas;
+    }
+    
+    public ArrayList<Integer> todosLosIdPersona(){
+        ArrayList<Integer> ids = new ArrayList();
+            try {
+            
+                String sql = "SELECT id_persona FROM persona;";
+
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+
+                ResultSet rs = ps.executeQuery();
+
+
+                while(rs.next()){
+                    int idPersona;
+
+                    idPersona = rs.getInt("id_persona");
+
+                    ids.add(idPersona);
+                }  
+
+                ps.close();
+            }
+            catch (SQLException ex) {
+                System.out.println("Error al obtener todos los ids " + ex.getMessage());
+            }
+        
+            return ids;
+        }
 }

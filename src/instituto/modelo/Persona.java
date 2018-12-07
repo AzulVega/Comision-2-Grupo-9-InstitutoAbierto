@@ -12,10 +12,10 @@ package instituto.modelo;
 public class Persona {
    private int idPersona;
    private String nombreApellido;
-   private long dni;
+   private String dni;
    private String celular;
 
-    public Persona(String nombreApellido, long dni, String celular) {
+    public Persona(String nombreApellido, String dni, String celular) {
         this.nombreApellido = nombreApellido;
         this.dni = dni;
         this.celular = celular;
@@ -24,6 +24,17 @@ public class Persona {
     public Persona() {
       //Constructor vacio: para inicializar un objeto vacio y luego a traves de los setter, darle valores a sus atributos// 
     }
+    
+    public Persona(int idPersona) {
+        this.idPersona = idPersona;
+    }
+
+   public Persona(int idPersona, String  nombreApellido, String dni, String celular) {
+       this.idPersona = idPersona;
+       this.nombreApellido = nombreApellido;
+       this.dni = dni;
+       this.celular = celular;
+   }
 
     public int getIdPersona() {
         return idPersona;
@@ -41,11 +52,11 @@ public class Persona {
         this.nombreApellido = nombreApellido;
     }
 
-    public long getDni() { // getter: devuelve el valor de un atributo//
+    public String getDni() { // getter: devuelve el valor de un atributo//
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

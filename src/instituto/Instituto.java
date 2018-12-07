@@ -5,20 +5,32 @@
  */
 package instituto;
 
-import instituto.controlador.PersonaData;
+
+import instituto.controlador.CursoData;
+import instituto.modelo.Conexion;
+import instituto.modelo.Curso;
+import static java.nio.file.Files.list;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+
+
+
 
 /**
  *
  * @author azu15
  */
 public class Instituto {
-
-    /**
-     * @param args the command line arguments
-     */
+     
     public static void main(String[] args) {
         
-        
-    }
-    
+Conexion connection = new Conexion();
+
+ArrayList <Curso> cursos = new <Curso>(list);
+
+CursoData cd = new CursoData(connection);
+
+cd.buscarCursos(cursos);
+
 }
+    }
