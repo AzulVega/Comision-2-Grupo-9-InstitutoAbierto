@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package instituto.controlador;
 
 import instituto.modelo.Conexion;
@@ -13,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,7 +20,7 @@ public class CursoData {
     private Connection connection = null; //va nuulll??
     private Conexion conexion;
     
-    public CursoData(Conexion conexion) {
+    public CursoData(Conexion conexion) { //atributo del tipo connection va a ser iniciaizado desde el constructor de materia data
          
         try {
             this.conexion = conexion;
@@ -51,6 +48,14 @@ public class CursoData {
 
                         ps.executeUpdate();
 
+                        ResultSet rs = ps.getGeneratedKeys();
+                        
+                        if (rs.next()) {
+                            curso.setIdCurso(rs.getInt(1));
+                        } else {
+                            System.out.println("No se pudo obtener el id luego de insertar un curso");
+                        }
+                        
                         ps.close(); 
                         
         } catch (SQLException ex) {
@@ -58,7 +63,7 @@ public class CursoData {
           }
         }
         
-        public void actualizarCurso (Curso curso){ //actualiza los datos de un curso a traves del id que se lo pasas por parametro
+        public void actualizarCurso (Curso curso){ //actualiza todos los datos de un curso a traves del id que se lo pasas por parametro, menos el id que es autoincrementable
         
         try {
             
@@ -101,20 +106,53 @@ public class CursoData {
             System.out.println("Error al eliminar un curso; " + ex.getMessage());
         }
     }
-
-       public ArrayList <Curso> buscarCursos(String nombre){ 
+        
+        public Curso buscarCurso(int idCurso){
         
         Curso curso = null;
-        ArrayList <Curso> cursos = new ArrayList<>();
+        
         try {
             
-            String sql = "SELECT * FROM curso WHERE nombre LIKE ?;";
+            String sql = "SELECT * FROM curso WHERE id_curso =?;";
 
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, "%"+nombre+"%");
+            ps.setInt(1, idCurso);
+           
             
             ResultSet rs = ps.executeQuery();
-           
+            
+            while(rs.next()){
+                curso = new Curso();
+                
+                curso.setIdCurso(rs.getInt("id_curso"));
+                curso.setNombre(rs.getString("nombre"));
+                curso.setDescripcion(rs.getString("descripcion"));
+                curso.setIdResponsableCurso(rs.getInt("id_responsable_curso"));
+                curso.setCupoDeAlumnos(rs.getInt("cupo_de_alumnos"));
+                curso.setCosto(rs.getDouble("costo"));
+            
+            }      
+            ps.close();
+            
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar un curso: " + ex.getMessage());
+        }
+        
+        return curso;
+    }
+
+       public List<Curso> obtenerCursos(){ 
+           List<Curso> cursos = new ArrayList<Curso>();
+        
+        try {
+            
+            String sql = "SELECT * FROM curso;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            ResultSet rs = ps.executeQuery();
+            Curso curso; 
             
             while(rs.next()){
                 curso = new Curso();
@@ -130,10 +168,11 @@ public class CursoData {
             ps.close();
 
         } catch (SQLException ex) {
-            System.out.println("Error al buscar una persona: " + ex.getMessage());
+            System.out.println("Error al obtener los cursos: " + ex.getMessage());
         }
         
         return cursos;
     } 
         
+       
     }

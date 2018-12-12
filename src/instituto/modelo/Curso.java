@@ -26,11 +26,15 @@ public class Curso {
     }
     
     public Curso() {
-        // los metodos son todos publicos para que puedas acceder desde otras clases 
+       this.idCurso = idCurso; // los metodos son todos publicos para que puedas acceder desde otras clases 
     }
     
     public Curso(int idCurso) {
         this.idCurso = idCurso;
+    }
+    
+    public Curso(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getIdCurso() {
@@ -81,5 +85,8 @@ public class Curso {
         this.costo = costo;
     }
    
-   
+   @Override
+   public String toString() { //te devuelve una cadena con los datos mas relevantes, en este caso el id y el nombre
+       return idCurso+"-"+nombre;
+   }
 }

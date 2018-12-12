@@ -24,6 +24,15 @@ public class Matricula {
         this.persona = persona;
         this.curso = curso;
     }
+
+    public Matricula(int idMatricula, Date fechaDeInscripcion, double costo, Persona persona, Curso curso) {
+        this.idMatricula = idMatricula;
+        this.fechaDeInscripcion = fechaDeInscripcion;
+        this.costo = costo;
+        this.persona = persona;
+        this.curso = curso;
+    }
+    
     
     public Matricula() {
         

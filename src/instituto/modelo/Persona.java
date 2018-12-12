@@ -15,7 +15,14 @@ public class Persona {
    private String dni;
    private String celular;
 
-    public Persona(String nombreApellido, String dni, String celular) {
+    public Persona(int idPersona, String nombreApellido, String dni, String celular) {
+        this.idPersona = idPersona;
+        this.nombreApellido = nombreApellido;
+        this.dni = dni;
+        this.celular = celular;
+    }
+
+    public Persona(String nombreApellido, String dni, String celular) { //hace falta ))
         this.nombreApellido = nombreApellido;
         this.dni = dni;
         this.celular = celular;
@@ -28,13 +35,6 @@ public class Persona {
     public Persona(int idPersona) {
         this.idPersona = idPersona;
     }
-
-   public Persona(int idPersona, String  nombreApellido, String dni, String celular) {
-       this.idPersona = idPersona;
-       this.nombreApellido = nombreApellido;
-       this.dni = dni;
-       this.celular = celular;
-   }
 
     public int getIdPersona() {
         return idPersona;
@@ -68,5 +68,8 @@ public class Persona {
         this.celular = celular;
     }
    
-   
+   @Override
+    public String toString() { //para que devuelva una cadena con la representacion del id y el nombre, los datos mas relevantes de la persona 
+        return idPersona+"-"+nombreApellido;
+    }
 }
