@@ -127,40 +127,7 @@ public class PersonaData {
         
         return persona;
     }
-    
-    public ArrayList <Persona> buscarPersonas(String nombreApellido){ //se usa string nombre y apellido para obtener el listado de nombres??
         
-        Persona persona = null;
-        ArrayList <Persona> personas = new ArrayList<>();
-        try {
-            
-            String sql = "SELECT * FROM persona WHERE nombre_apellido LIKE ? OR id LIKE ?;";
-
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, "%"+nombreApellido+"%");
-            ps.setString(2, "%"+nombreApellido+"%");
-            
-            ResultSet rs=ps.executeQuery();
-           
-            
-            while(rs.next()){
-                persona = new Persona();
-                
-                persona.setIdPersona(rs.getInt("id_Persona"));
-                persona.setNombreApellido(rs.getString("nombre_apellido"));
-                persona.setDni(rs.getString("dni"));
-                persona.setCelular(rs.getString("celular"));
-                personas.add(persona);
-            }      
-            ps.close();
-
-        } catch (SQLException ex) {
-            System.out.println("Error al buscar una persona: " + ex.getMessage());
-        }
-        
-        return personas;
-    }
-    
     public ArrayList<Integer> todosLosIdPersona(){
         ArrayList<Integer> ids = new ArrayList();
             try {

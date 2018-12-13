@@ -67,9 +67,5 @@ public class Persona {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-   
-   @Override
-    public String toString() { //para que devuelva una cadena con la representacion del id y el nombre, los datos mas relevantes de la persona 
-        return idPersona+"-"+nombreApellido;
-    }
+  
 }

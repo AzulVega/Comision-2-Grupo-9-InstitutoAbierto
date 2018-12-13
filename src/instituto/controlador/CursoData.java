@@ -63,7 +63,7 @@ public class CursoData {
           }
         }
         
-        public void actualizarCurso (Curso curso){ //actualiza todos los datos de un curso a traves del id que se lo pasas por parametro, menos el id que es autoincrementable
+    public void actualizarCurso (Curso curso){ //actualiza todos los datos de un curso a traves del id que se lo pasas por parametro, menos el id que es autoincrementable
         
         try {
             
@@ -90,7 +90,7 @@ public class CursoData {
         }
     }
         
-        public void eliminarCurso(int idCurso) {
+    public void eliminarCurso(int idCurso) {
         
         try {
             String sql = "DELETE FROM curso WHERE id_curso =?;"; // envia una consulta donde elimina el curso con el id que obtumo por parametro
@@ -107,7 +107,7 @@ public class CursoData {
         }
     }
         
-        public Curso buscarCurso(int idCurso){
+    public Curso buscarCurso(int idCurso){
         
         Curso curso = null;
         
@@ -142,7 +142,7 @@ public class CursoData {
         return curso;
     }
 
-       public List<Curso> obtenerCursos(){ 
+    public List<Curso> obtenerCursos(){ 
            List<Curso> cursos = new ArrayList<Curso>();
         
         try {
@@ -173,6 +173,7 @@ public class CursoData {
         
         return cursos;
     } 
-        
+       
+      
        
     }
