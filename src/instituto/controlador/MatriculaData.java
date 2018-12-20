@@ -6,12 +6,16 @@
 package instituto.controlador;
 
 import instituto.modelo.Conexion;
+import instituto.modelo.Curso;
 import instituto.modelo.Matricula;
+import instituto.modelo.Persona;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -93,6 +97,38 @@ public class MatriculaData {
         } catch (SQLException ex) {
             System.out.println("Error al actualizar datos de una matricula: " + ex.getMessage());
         }
+    }
+    
+    public ArrayList<String> obtenerAlumnosPorCurso (int idCurso){
+        
+        ArrayList<String> alumnosEnCurso = new ArrayList();
+        
+        try {
+            
+            String sql = "SELECT nombre_apellido FROM matricula INNER JOIN persona WHERE matricula.persona_id = persona.id_persona  AND curso_id = ?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idCurso);
+           
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                    
+                String nombre;
+                
+                nombre = rs.getString("nombre_apellido");
+                alumnosEnCurso.add(nombre);
+            
+            }      
+            ps.close();
+            
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar alumnos de un determinado curso: " + ex.getMessage());
+        }
+        
+        return alumnosEnCurso;        
     }
     
   

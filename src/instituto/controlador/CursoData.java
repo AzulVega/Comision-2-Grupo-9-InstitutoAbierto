@@ -142,8 +142,8 @@ public class CursoData {
         return curso;
     }
 
-    public List<Curso> obtenerCursos(){ 
-           List<Curso> cursos = new ArrayList<Curso>();
+    public ArrayList<Curso> obtenerCursos(){ 
+           ArrayList<Curso> cursos = new ArrayList<Curso>();
         
         try {
             
@@ -172,8 +172,107 @@ public class CursoData {
         }
         
         return cursos;
-    } 
-       
-      
-       
+    }
+    
+    public Curso buscarCursoPorNombre (String nombreCurso){
+        
+        Curso curso = null;
+        
+        try {
+            
+            String sql = "SELECT * FROM curso WHERE nombre = ?;";
+
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nombreCurso);
+           
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                curso = new Curso();
+                
+                curso.setIdCurso(rs.getInt("id_curso"));
+                curso.setNombre(rs.getString("nombre"));
+                curso.setDescripcion(rs.getString("descripcion"));
+                curso.setIdResponsableCurso(rs.getInt("id_responsable_curso"));
+                curso.setCupoDeAlumnos(rs.getInt("cupo_de_alumnos"));
+                curso.setCosto(rs.getDouble("costo"));
+            
+            }      
+            ps.close();
+            
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar un curso: " + ex.getMessage());
+        }
+        
+        return curso;
+    }
+    
+       /* public int cantidadDeInscriptos(int cursoId){ 
+           int cupos = 0;
+           
+          try {
+            String SQL = "SELECT curso_id, COUNT(*) FROM matricula GROUP BY curso_id WHERE curso_id = ?;";
+
+            PreparedStatement ps = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, cursoId);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            cupos = rs.getInt("COUNT(*)");
+        
+          
+            } catch (SQLException ex) {
+            System.out.println("Error al buscar un curso: " + ex.getMessage());
+            }
+          
+          
+          return cupos;
+          
+          }*/
+    
+    public boolean hayDisponibilidad(int cursoId){
+        int cupo = 0;
+        int cantidadDeInscriptos =0;
+        
+        try{
+        
+        String sql = "SELECT COUNT (*) FROM curso, matricula WHERE curso.id_curso = matricula.curso_id AND curso.id_curso = ? ;";
+         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+         ps.setInt(1,cursoId);
+         ResultSet rs = ps.executeQuery();
+         
+         
+         rs.next();
+         
+         
+         cantidadDeInscriptos = rs.getInt(1);
+
+         
+         
+         
+         sql = "SELECT cupo_de_alumnos FROM curso WHERE curso.id_curso = ? ;";
+         
+         ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+         ps.setInt(1,cursoId);
+         rs = ps.executeQuery();
+         
+         if (rs.next()) {
+           cupo = rs.getInt(1);
+         }
+         
+         
+         
+        }catch (SQLException ex) {
+            System.out.println("Error al buscar un curso: " + ex.getMessage());
+        }
+        
+        return cantidadDeInscriptos < cupo;
+        
+    }
+        
+
+    
+ 
     }

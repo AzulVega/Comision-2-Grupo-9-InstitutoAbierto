@@ -10,12 +10,13 @@ package instituto.vistas;
  * @author azu15
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MenuPrincipal
-     */
+           
+           
     public MenuPrincipal() {
         initComponents();
+         this.setLocationRelativeTo(null);
+         this.setSize(800, 600);
+         this.setResizable(false);
     }
 
     /**
@@ -27,66 +28,154 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbInscribirAlumno = new javax.swing.JButton();
-        jbCrearCurso = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        escritorio = new javax.swing.JPanel();
+        jbRegistrarme = new javax.swing.JButton();
+        jbAlumnosPorCurso = new javax.swing.JButton();
+        jbSistemaDeAlumnos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jbCursos = new javax.swing.JButton();
+        jbIdAlumnos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jbInscribirAlumno.setText("Inscribir Alumno");
-        jbInscribirAlumno.addActionListener(new java.awt.event.ActionListener() {
+        escritorio.setBackground(new java.awt.Color(19, 103, 128));
+        escritorio.setMaximumSize(new java.awt.Dimension(800, 600));
+        escritorio.setMinimumSize(new java.awt.Dimension(800, 600));
+        escritorio.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jbRegistrarme.setBackground(new java.awt.Color(48, 165, 176));
+        jbRegistrarme.setText("Registrarme ");
+        jbRegistrarme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbInscribirAlumnoActionPerformed(evt);
+                jbRegistrarmeActionPerformed(evt);
             }
         });
 
-        jbCrearCurso.setText("Crear Curso");
-        jbCrearCurso.addActionListener(new java.awt.event.ActionListener() {
+        jbAlumnosPorCurso.setBackground(new java.awt.Color(48, 165, 176));
+        jbAlumnosPorCurso.setText("Alumnos por Curso");
+        jbAlumnosPorCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCrearCursoActionPerformed(evt);
+                jbAlumnosPorCursoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Inscribirme a Curso");
+        jbSistemaDeAlumnos.setBackground(new java.awt.Color(48, 165, 176));
+        jbSistemaDeAlumnos.setText("Sistema de Alumnos");
+        jbSistemaDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSistemaDeAlumnosActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("NSimSun", 1, 18)); // NOI18N
+        jLabel1.setText("INSTITUTO ABIERTO DE FORMACION PROFESIONAL ARGENTINA ");
+
+        jbCursos.setText("Cursos");
+        jbCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCursosActionPerformed(evt);
+            }
+        });
+
+        jbIdAlumnos.setText("¿Cual es mi ID de Alumno?");
+        jbIdAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbIdAlumnosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                        .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbSistemaDeAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbRegistrarme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbAlumnosPorCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129)
+                        .addComponent(jbIdAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(123, 123, 123))))
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jbRegistrarme, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jbIdAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))
+                    .addGroup(escritorioLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jbSistemaDeAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
+                .addComponent(jbAlumnosPorCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbInscribirAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbCrearCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jbInscribirAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jbCrearCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbInscribirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirAlumnoActionPerformed
-       InscribirAlumno inscribirAlumno = new InscribirAlumno();
-       inscribirAlumno.setVisible(true); //haace visible la ventana que estamos instanciando 
-       this.dispose();// cierra la ventana actual (menu principal)
-    }//GEN-LAST:event_jbInscribirAlumnoActionPerformed
+    private void jbRegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarmeActionPerformed
+       Registrarme registrarme = new Registrarme();
+       registrarme.setVisible(true);
+       this.dispose();
+       //haace visible la ventana que estamos instanciando
+       
+       // cierra la ventana actual (menu principal)
+       
+    }//GEN-LAST:event_jbRegistrarmeActionPerformed
 
-    private void jbCrearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearCursoActionPerformed
-        CrearCurso crearCurso = new CrearCurso();
-        crearCurso.setVisible(true);
+    private void jbAlumnosPorCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlumnosPorCursoActionPerformed
+        AlumnosPorCurso alumnosPorCurso = new AlumnosPorCurso();
+        alumnosPorCurso.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jbCrearCursoActionPerformed
+    }//GEN-LAST:event_jbAlumnosPorCursoActionPerformed
+
+    private void jbSistemaDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSistemaDeAlumnosActionPerformed
+        SistemaDeAlumnos sistemaDeAlumnos = new SistemaDeAlumnos();
+        sistemaDeAlumnos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jbSistemaDeAlumnosActionPerformed
+
+    private void jbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCursosActionPerformed
+        Cursos cursos = new Cursos();
+        cursos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jbCursosActionPerformed
+
+    private void jbIdAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIdAlumnosActionPerformed
+        ListaDeAlumnosConId lista = new ListaDeAlumnosConId();
+        lista.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jbIdAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,8 +213,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jbCrearCurso;
-    private javax.swing.JButton jbInscribirAlumno;
+    private javax.swing.JPanel escritorio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbAlumnosPorCurso;
+    private javax.swing.JButton jbCursos;
+    private javax.swing.JButton jbIdAlumnos;
+    private javax.swing.JButton jbRegistrarme;
+    private javax.swing.JButton jbSistemaDeAlumnos;
     // End of variables declaration//GEN-END:variables
 }
