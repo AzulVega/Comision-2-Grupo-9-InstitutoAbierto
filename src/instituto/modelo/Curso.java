@@ -25,13 +25,14 @@ public class Curso {
         this.costo = costo;
     }
     
+    public Curso(int idResponsableCurso) {
+        this.idResponsableCurso = idResponsableCurso;
+    }
+    
     public Curso() {
        this.idCurso = idCurso; // los metodos son todos publicos para que puedas acceder desde otras clases 
     }
     
-    public Curso(int idCurso) {
-        this.idCurso = idCurso;
-    }
     
     public Curso(String nombre) {
         this.nombre = nombre;

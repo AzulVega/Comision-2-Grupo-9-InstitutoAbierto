@@ -77,6 +77,8 @@ public class ListaDeAlumnosConId extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(28, 134, 192));
+
         jtListaAlumnosConId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jtListaAlumnosConId.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

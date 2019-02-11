@@ -48,7 +48,7 @@ public class ListaDeAlumnosPorCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(19, 103, 128));
+        jPanel1.setBackground(new java.awt.Color(28, 134, 192));
 
         jtAlumnosPorCurso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jtAlumnosPorCurso.setModel(new javax.swing.table.DefaultTableModel(

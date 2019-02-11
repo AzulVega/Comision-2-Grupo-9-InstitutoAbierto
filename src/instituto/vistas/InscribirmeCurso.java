@@ -78,7 +78,7 @@ public class InscribirmeCurso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(83, 146, 191));
 
-        jPanel1.setBackground(new java.awt.Color(83, 146, 191));
+        jPanel1.setBackground(new java.awt.Color(28, 134, 192));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 20)); // NOI18N
         jLabel1.setText("Seleccione el curso al que desea inscribirse ");
@@ -133,11 +133,11 @@ public class InscribirmeCurso extends javax.swing.JFrame {
                     .addComponent(jtfAlumno))
                 .addGap(48, 48, 48))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jbVolverAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(78, 78, 78)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()

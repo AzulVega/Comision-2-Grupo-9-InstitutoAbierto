@@ -107,9 +107,6 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jbRegistrarme">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b0" green="a5" red="30" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Registrarme "/>
           </Properties>
           <Events>
@@ -118,9 +115,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbAlumnosPorCurso">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b0" green="a5" red="30" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Alumnos por Curso"/>
           </Properties>
           <Events>
@@ -129,9 +123,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbSistemaDeAlumnos">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b0" green="a5" red="30" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Sistema de Alumnos"/>
           </Properties>
           <Events>

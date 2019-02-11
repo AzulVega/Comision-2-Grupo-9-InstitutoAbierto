@@ -43,7 +43,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.setMinimumSize(new java.awt.Dimension(800, 600));
         escritorio.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jbRegistrarme.setBackground(new java.awt.Color(48, 165, 176));
         jbRegistrarme.setText("Registrarme ");
         jbRegistrarme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +50,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbAlumnosPorCurso.setBackground(new java.awt.Color(48, 165, 176));
         jbAlumnosPorCurso.setText("Alumnos por Curso");
         jbAlumnosPorCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,7 +57,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbSistemaDeAlumnos.setBackground(new java.awt.Color(48, 165, 176));
         jbSistemaDeAlumnos.setText("Sistema de Alumnos");
         jbSistemaDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
